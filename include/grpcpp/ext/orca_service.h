@@ -31,6 +31,11 @@
 #include "absl/types/optional.h"
 
 namespace grpc {
+
+namespace testing {
+class OrcaTestClientPeer;
+}  // namespace testing
+
 namespace experimental {
 
 // RPC service implementation for supplying out-of-band backend
@@ -55,6 +60,8 @@ class OrcaService : public Service {
 
  private:
   class Reactor;
+
+  friend class testing::OrcaTestClientPeer;
 
   Slice GetOrCreateSerializedResponse();
 
